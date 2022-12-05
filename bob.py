@@ -2,6 +2,8 @@ import os
 from dotenv import load_dotenv
 import openai
 
+# test
+
 load_dotenv()
 openai.api_key = os.environ.get('OPENAI_KEY')
 completion = openai.Completion()
