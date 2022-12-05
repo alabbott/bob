@@ -13,6 +13,27 @@ I would like for the chat to be fairly seamless, recognizing when it needs to ad
 
 The bot should start by asking GPT-3 if the message contains a reference to food or weight, if so it will
 
+Process:
+1. Get message from user via whatever method, probably HTTPS request from Twilio
+2. Make a call to GPT-3 to classify the request and respond with request type
+    a. eating food
+    b. current weight
+    c. questions
+    d. other
+3. Use if/elif to handle the message based on classifiction
+    a. Eating Food
+        1. Have GPT-3 identify the item and calorie count
+        2. Add food, calories, time, and user to database
+        3. Tell the user that the food was logged!
+    b. Current Weight
+        1. Have GPT-3 identify the weight
+        2. Log the weight to the database
+        3. Tell the user the weight was logged
+    c. Questions
+        1. Have GPT-3 classify into the following categories
+            a.
+
+
 # Open AI Prompts
 
 To start classifying the initial request, I will use the following prompt:
