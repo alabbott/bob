@@ -16,22 +16,27 @@ The bot should start by asking GPT-3 if the message contains a reference to food
 Process:
 1. Get message from user via whatever method, probably HTTPS request from Twilio
 2. Make a call to GPT-3 to classify the request and respond with request type
-    a. eating food
-    b. current weight
-    c. questions
-    d. other
+    1. eating food
+    2. current weight
+    3. questions
+    4. other
 3. Use if/elif to handle the message based on classifiction
-    a. Eating Food
+    1. Eating Food
         1. Have GPT-3 identify the item and calorie count
         2. Add food, calories, time, and user to database
         3. Tell the user that the food was logged!
-    b. Current Weight
+    2. Current Weight
         1. Have GPT-3 identify the weight
         2. Log the weight to the database
         3. Tell the user the weight was logged
-    c. Questions
+    3. Questions
         1. Have GPT-3 classify into the following categories
-            a.
+            a. Calories today
+            b. Calories left to goal
+            c. Weight lost
+            d. Weight left to go
+    4. Other
+        1. General chat, send to GPT-3 and get a response
 
 
 # Open AI Prompts
