@@ -2,6 +2,7 @@ import os
 from dotenv import load_dotenv
 import openai
 import psycopg2
+import re
 
 load_dotenv()
 openai.api_key = os.environ.get('OPENAI_KEY')
@@ -18,6 +19,20 @@ def ask(question, chat_log=None):
     response = completion.create(
         prompt=prompt, engine="davinci", stop=['\nHuman'], temperature=0.9,
         top_p=1, frequency_penalty=0, presence_penalty=0.6, best_of=1,
+        max_tokens=150)
+    answer = response.choices[0].text.strip()
+    return answer
+
+def gpt3(question):
+    prompt = question
+    response = completion.create(
+        prompt=prompt,
+        engine="davinci-003", 
+        temperature=0.9, 
+        top_p=1, 
+        frequency_penalty=0, 
+        presence_penalty=0.6, 
+        best_of=1, 
         max_tokens=150)
     answer = response.choices[0].text.strip()
     return answer
@@ -43,20 +58,20 @@ def handleMessage(message, category):
     elif category == "current weight":
         # handle
         return message
-    elif category == "current weight":
+    elif category == "questions":
         # handle
         return message
     else:
-        # handle
-        return message
+        response = gpt3(message)
+        return response
 
 def executeQuery(query):
     # Connect to the database
     conn = psycopg2.connect(
         host="localhost",
-        database="my_database",
+        database="foodbot",
         user="postgres",
-        password='POSTGRES_PASS'
+        password="whatevs1"
     )
 
     # Create a cursor to interact with the database
@@ -67,10 +82,6 @@ def executeQuery(query):
 
     # Fetch the query results
     results = cur.fetchall()
-
-    # Loop through the results and print each row
-    # for row in results:
-    #    print(row)
 
     # Close the cursor and connection
     cur.close()

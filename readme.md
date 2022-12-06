@@ -31,15 +31,18 @@ Process:
         3. Tell the user the weight was logged
     3. Questions
         1. Have GPT-3 classify into the following categories
-            a. Calories today
-            b. Calories left to goal
-            c. Weight lost
-            d. Weight left to go
+            1. Calories today
+            2. Calories left to goal
+            3. Weight lost
+            4. Weight left to go
     4. Other
         1. General chat, send to GPT-3 and get a response
 
 
+
 # Open AI Prompts
+
+## Classfy Requests
 
 To start classifying the initial request, I will use the following prompt:
 
@@ -47,16 +50,11 @@ To start classifying the initial request, I will use the following prompt:
 
     "How many calories have I eaten today?"
 
-Show the calories mentioned and item named in the format below.
+## Extract Calories and Food
 
-Example: 
-Name: Banana
-Calories: 150
-Meal: Breakfast
+    Show the calories mentioned and item named in the format below.
 
-"hamburger, lunch, 600 calories"
+    Example: {banana, 150}
 
-Name: Hamburger
-Calories: 600
-Meal: Lunch
+    "hamburger, lunch, 600 calories"
 
