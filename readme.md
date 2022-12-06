@@ -40,7 +40,7 @@ Process:
 
 
 
-# Open AI Prompts
+# OpenAI Prompts
 
 ## Classfy Requests
 
@@ -58,3 +58,24 @@ To start classifying the initial request, I will use the following prompt:
 
     "hamburger, lunch, 600 calories"
 
+## Extract Weight
+
+    Show the weight mentioned in the format below, convert to lbs if required.
+
+    Example: {220 lbs}
+
+    "120 kg"
+
+## Questions
+
+    Given the tables Users(ID, Name, Phone Number), Food(ID, Item, UID(foreign key), Calories, Date/Time), and Weight(ID, Weight, UID(foreign key), Date/Time), WeightGoals(ID, UID(foreign key), GoalWeight, StartingWeight), CalorieGoals(ID, UID(foreign key), TargetCalories), ActivityGoals(ID, UID(foreign key), TargetActivity), create a postgres query to answer the following question (use [UserID] for user ID:
+
+    "How many calories until I reach my goal for the day?"
+
+## Answer to question
+
+    Politely answer the following question, {answer} is the answer: {message}
+
+### Tables for questions prompt
+
+    Users(ID, Name, Phone Number), Food(ID, Item, UID(foreign key), Calories, Date/Time), and Weight(ID, Weight, UID(foreign key), Date/Time), WeightGoals(ID, UID(foreign key), GoalWeight, StartingWeight), CalorieGoals(ID, UID(foreign key), TargetCalories), ActivityGoals(ID, UID(foreign key), TargetActivity)

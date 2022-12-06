@@ -59,11 +59,16 @@ def handleMessage(message, category):
         # handle
         return message
     elif category == "questions":
-        # handle
-        return message
+        query = gpt3(f'Given the tables Users(ID, Name, Phone Number), Food(ID, Item, UID(foreign key), Calories, Date/Time), and Weight(ID, Weight, UID(foreign key), Date/Time), WeightGoals(ID, UID(foreign key), GoalWeight, StartingWeight), CalorieGoals(ID, UID(foreign key), TargetCalories), ActivityGoals(ID, UID(foreign key), TargetActivity), create a postgres query to answer the following question (use [UserID] for user ID: "{message}"')
+        answer = executeQuery(query)
+        response = gpt3(f'Politely answer the following question, {answer} is the answer: {message}')
+        return response
     else:
         response = gpt3(message)
         return response
+
+def newUser():
+    return 0
 
 def executeQuery(query):
     # Connect to the database
